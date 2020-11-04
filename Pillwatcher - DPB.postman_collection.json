@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "3a01a9fe-e9bd-4116-90c2-0cf797bb3831",
+		"name": "Pillwatcher - DPB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Logan Warden\",\r\n  \"document\": \"59896548048\",\r\n  \"imageUrl\": \"https://s3.com/image_from_user.jpg\",\r\n  \"email\": \"logan.warden@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostCloud}}/v1/pillwatcher/admins",
+							"host": [
+								"{{hostCloud}}"
+							],
+							"path": [
+								"v1",
+								"pillwatcher",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Logan Warden 2\",\r\n  \"imageUrl\": \"https://s3.com/image_from_user2.jpg\",\r\n  \"email\": \"logan.warden2@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostCloud}}/admins/{{cpf}}",
+							"host": [
+								"{{hostCloud}}"
+							],
+							"path": [
+								"admins",
+								"{{cpf}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Admin By CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostCloud}}/admins/{{cpf}}",
+							"host": [
+								"{{hostCloud}}"
+							],
+							"path": [
+								"admins",
+								"{{cpf}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Broker",
+			"item": [
+				{
+					"name": "Publish on MQTT Broker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n    \t\"message\": \"{\\\"message: this is a message\\\"}\",\r\n    \t\"topic\":\"test\",\r\n    \t\"retained\":true,\r\n    \t\"qos\":0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/mqtt/publish",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"mqtt",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Nurse",
+			"item": [
+				{
+					"name": "Find Nurse By CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.99.25.198:8080/v1/pillwatcher/nurses/59896548048",
+							"host": [
+								"192",
+								"99",
+								"25",
+								"198"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"pillwatcher",
+								"nurses",
+								"59896548048"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Nurse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"coren\": 123456,\r\n  \"document\": \"59896548048\",\r\n  \"email\": \"logan.warden@email.com\",\r\n  \"federativeUnit\": \"DF\",\r\n  \"imageUrl\": \"https://s3.com/image_from_user.jpg\",\r\n  \"name\": \"Logan Warden\",\r\n  \"phone\": 992568745\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.99.25.198:8080/v1/pillwatcher/nurses",
+							"host": [
+								"192",
+								"99",
+								"25",
+								"198"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"pillwatcher",
+								"nurses"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Create Patient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bornDate\": \"2020-10-30T21:42:26.961Z\",\r\n  \"document\": \"01234567890\",\r\n  \"idNurse\": 145,\r\n  \"imageUrl\": \"https://s3.com/image_from_user.jpg\",\r\n  \"name\": \"Logan Warden 2\",\r\n  \"observation\": \"O paciente possui pressão alta;\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "192.99.25.198:8082/v1/pillwatcher/patients",
+							"host": [
+								"192",
+								"99",
+								"25",
+								"198"
+							],
+							"port": "8082",
+							"path": [
+								"v1",
+								"pillwatcher",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Patient By CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.99.25.198:8082/v1/pillwatcher/patients/12430974002?nurseId=26",
+							"host": [
+								"192",
+								"99",
+								"25",
+								"198"
+							],
+							"port": "8082",
+							"path": [
+								"v1",
+								"pillwatcher",
+								"patients",
+								"12430974002"
+							],
+							"query": [
+								{
+									"key": "nurseId",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.99.25.198:8082/v1/pillwatcher/patients/",
+							"host": [
+								"192",
+								"99",
+								"25",
+								"198"
+							],
+							"port": "8082",
+							"path": [
+								"v1",
+								"pillwatcher",
+								"patients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
